@@ -53,16 +53,16 @@ function setup_etc_host {
   then
     return
   fi
-  if ! grep -q localdocker /etc/hosts
+  if ! grep -q $DOCKER_DOMAIN /etc/hosts
   then
-    echo "Adding localdocker to /etc/hosts (may need your password for sudo)..."
+    echo "Adding $DOCKER_DOMAIN to /etc/hosts (may need your password for sudo)..."
 
     echo "If you want you can add it manually by adding:"
-    echo "$DOCKER_IP localdocker add the end of the /etc/hosts"
+    echo "$DOCKER_IP $DOCKER_DOMAIN add the end of the /etc/hosts"
     echo ""
     echo "Or you can just ignore it and directly use the ip: $DOCKER_IP"
 
-    read -p "Add the localdocker host to system configuration? [y/n] " -n 1 -r
+    read -p "Add the $DOCKER_DOMAIN host to system configuration? [y/n] " -n 1 -r
     echo    # move to a new line
     if [[ $REPLY =~ ^[Yy]$ ]]
     then
