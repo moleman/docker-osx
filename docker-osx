@@ -86,6 +86,7 @@ function help() {
   echo "  ssh       Open SSH console on vagrant box"
   echo "  env       Outputs environment variables for Docker to connect remotely"
   echo "  shell     Open a shell with Docker VM started and environment set"
+  echo "  ip        Output Docker IP address"
   echo ""
 }
 
@@ -234,6 +235,10 @@ case "$1" in
     ;;
   env)
     echo "export DOCKER_HOST=$DOCKER_HOST"
+    exit 0
+    ;;
+  ip)
+    echo $DOCKER_IP
     exit 0
     ;;
   vagrant)
