@@ -15,13 +15,9 @@ Docker on OS X in three steps:
 
 2. Put the `docker-osx` script somewhere on your path:
 
- with [bpkg](https://github.com/bpkg/bpkg):
+ with curl:
 
-      bpkg install noplay/docker-osx
-
- or curl:
-
-        curl https://raw.githubusercontent.com/noplay/docker-osx/HEAD/docker-osx > /usr/local/bin/docker-osx
+        curl https://raw.githubusercontent.com/moleman/docker-osx/HEAD/docker-osx > /usr/local/bin/docker-osx
         chmod +x /usr/local/bin/docker-osx
 
 3. Run:
@@ -32,7 +28,7 @@ Docker on OS X in three steps:
 
 This script acts as both an installer and as Virtual machine manager. On first run, it installs an OS X binary of the Docker client and starts a virtual machine with the Docker daemon running. It then sets up the shell environment so the Docker client knows to talk to the Docker daemon on the virtual machine.
 
-The virtual machine that Docker runs on is given the hostname `localdocker`. For example, if you run `docker run -p 8000:8000 ...`, then that will be available at `localdocker:8000` from OS X.
+The virtual machine that Docker runs on is given the hostname `docker.local`. For example, if you run `docker run -p 8000:8000 ...`, then that will be available at `docker.local:8000` from OS X.
 
 ## Additional commands
 
@@ -58,6 +54,9 @@ Stop the Vagrant VM. You'll probably want to do this after you've finished worki
 
 Start the virtual machine and open a shell with DOCKER_HOST environment variable configured.
 
+### docker-osx ip
+
+Output the IP address of the virtual machine.
 
 ## Override defaults
 
@@ -91,7 +90,7 @@ Default: `172.16.42.43`
 
 The domain name added to `/etc/hosts`, pointing at the `DOCKER_IP`.
 
-Default: `localdocker`
+Default: `docker.local`
 
 ### DOCKER_PORT
 
